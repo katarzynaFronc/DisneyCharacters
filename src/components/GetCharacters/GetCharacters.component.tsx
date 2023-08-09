@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
+import { CharacterProps } from "../CharacterDetail/CharacterDetails.component";
 
-interface CharacterProps {
-  _id: number;
-  name: string;
-  imageUrl: string;
-  films: string[];
-  tvShows: string[];
-}
+export const charactersApi50 = () => fetch("https://api.disneyapi.dev/character");
+export const charactersApi100 = () => fetch("http://api.disneyapi.dev/character?page=2&pageSize=50");
 
 export const GetCharacters = () => {
   const [characters, setCharacters] = useState<CharacterProps[]>([]);
@@ -14,7 +10,7 @@ export const GetCharacters = () => {
   useEffect(() => {
     const fetchCharacters50 = async () => {
       try {
-        const response = await fetch("https://api.disneyapi.dev/character");
+        const response = await charactersApi50();
         const data = await response.json();
         return data.data.slice(0, 50);
       } catch (error) {
@@ -24,7 +20,7 @@ export const GetCharacters = () => {
 
     const fetchCharacters100 = async () => {
       try {
-        const response = await fetch("http://api.disneyapi.dev/character?page=2&pageSize=50");
+        const response = await charactersApi100();
         const data = await response.json();
         return data.data.slice(0, 50);
       } catch (error) {
@@ -43,5 +39,5 @@ export const GetCharacters = () => {
       });
   }, []);
 
-  return <></>;
+  return characters;
 };
