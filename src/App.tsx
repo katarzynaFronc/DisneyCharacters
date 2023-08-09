@@ -6,7 +6,6 @@ const App = () => {
 
   return (
     <div>
-      <h1>Disney Characters</h1>
       <CharactersList characters={characters} />
     </div>
   );

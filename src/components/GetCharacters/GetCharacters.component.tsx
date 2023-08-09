@@ -32,7 +32,6 @@ export const GetCharacters = () => {
       .then(([characters50, characters100]) => {
         const mergedCharacters = [...characters50, ...characters100];
         setCharacters(mergedCharacters);
-        console.log(mergedCharacters);
       })
       .catch((error) => {
         console.error(error);

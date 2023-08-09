@@ -1,5 +1,9 @@
-import { StarBorder } from "@mui/icons-material";
 import TvIcon from "@mui/icons-material/Tv";
+import { StarBorder } from "@mui/icons-material";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import { CharacterDescribe, CharacterName, ShowsIcon } from "./CharacterDetails.styled";
+import { StarButton } from "../CharacterDetail/CharacterDetails.styled";
 
 export interface CharacterProps {
   _id: number;
@@ -19,15 +23,22 @@ export const CharacterDetails = ({ character }: SingleCharacterDetailsProps) => 
   if (tvShows.length > 0) {
     icon = <TvIcon />;
   }
+
   return (
-    <div>
+    <CharacterDescribe>
       <img src={imageUrl} alt="image"></img>
-      <h1>{name}</h1>
-      <div>{icon}</div>
+      <CharacterName>
+        <span>{name}</span>
+        <ShowsIcon>
+          <Tooltip title={tvShows} arrow>
+            <IconButton>{icon}</IconButton>
+          </Tooltip>
+        </ShowsIcon>
+      </CharacterName>
       <p>{films.length}</p>
-      <button>
+      <StarButton>
         <StarBorder />
-      </button>
-    </div>
+      </StarButton>
+    </CharacterDescribe>
   );
 };
