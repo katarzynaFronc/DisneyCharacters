@@ -1,6 +1,6 @@
-import { CharactersList } from "../CharactersList/CharactersList.component";
+import { BestCharacterCard } from "../BestCharacterCard/BestCharacterCard.component";
 import { GetCharacters } from "../GetCharacters/GetCharacters.component";
-import { MyFavorites } from "../MyFavorites/MyFavorites.component";
+import { ListsContainer } from "../ListsContainer/ListsContainer.component";
 import { CharactersContainer } from "./Characters.styled";
 
 export const Characters = () => {
@@ -8,8 +8,8 @@ export const Characters = () => {
 
   return (
     <CharactersContainer>
-      <CharactersList characters={characters} />
-      <MyFavorites />
+      <BestCharacterCard character={characters} />
+      <ListsContainer />
     </CharactersContainer>
   );
 };

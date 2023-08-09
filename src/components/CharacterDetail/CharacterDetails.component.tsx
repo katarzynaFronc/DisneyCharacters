@@ -1,5 +1,6 @@
 import TvIcon from "@mui/icons-material/Tv";
 import { StarBorder } from "@mui/icons-material";
+
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { CharacterDescribe, CharacterName, ShowsIcon } from "./CharacterDetails.styled";
