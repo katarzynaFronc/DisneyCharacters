@@ -1,12 +1,9 @@
-import { CharactersList } from "./components/CharactersList/CharactersList.component";
-import { GetCharacters } from "./components/GetCharacters/GetCharacters.component";
+import { Characters } from "./components/Characters/Characters.component";
 
 const App = () => {
-  const characters = GetCharacters();
-
   return (
     <div>
-      <CharactersList characters={characters} />
+      <Characters />
     </div>
   );
 };
