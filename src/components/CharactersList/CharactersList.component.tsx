@@ -3,12 +3,13 @@ import { CharacterDescribe } from "../CharacterDetail/CharacterDetails.styled";
 import { ListContainer } from "./CharactersList.styled";
 
 export interface CharactersListProps {
-  characters: CharacterProps[];
+  characters?: CharacterProps[];
+  findfavorite?: CharacterProps[];
+  onAddToFavorites?: (character: CharacterProps) => void;
 }
 
 export const CharactersList = ({ characters }: CharactersListProps) => {
-  const withFilms = characters.filter((character) => character.films.length > 0);
-
+  const withFilms = characters ? characters.filter((character) => character.films.length > 0) : [];
   return (
     <ListContainer>
       <h3>Disney Characters</h3>
