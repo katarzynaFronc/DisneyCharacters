@@ -1,11 +1,11 @@
 import { ListContainer } from "../CharactersList/CharactersList.styled";
 import { CharacterDescribe } from "../CharacterDetail/CharacterDetails.styled";
-import { CharacterDetails, CharacterProps } from "../CharacterDetail/CharacterDetails.component";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { CharacterProps, FavoritesContext } from "../../context/favorites.provider";
+import { useContext } from "react";
+import { CharacterDetails } from "../CharacterDetail/CharacterDetails.component";
 
 export const MyFavorites = () => {
-  const [favorites, setFavorites] = useLocalStorage("favorites", []);
-
+  const favorites = useContext(FavoritesContext);
   return (
     <ListContainer>
       <h3>My Favorites</h3>

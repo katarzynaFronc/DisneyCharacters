@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { StarBorder } from "@mui/icons-material";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import { CharacterProps, SingleCharacterDetailsProps } from "../CharacterDetail/CharacterDetails.component";
 import { StarButton } from "./FavoriteButton.styled";
+import { FavoritesContext } from "../../context/favorites.provider";
 
 export const FavoriteButton = ({ _id, character }: SingleCharacterDetailsProps) => {
+  const favorites = useContext(FavoritesContext);
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {

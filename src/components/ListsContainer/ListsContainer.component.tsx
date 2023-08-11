@@ -1,11 +1,9 @@
+import { CharactersListProps } from "../Characters/Characters.component";
 import { CharactersList } from "../CharactersList/CharactersList.component";
-import { GetCharacters } from "../GetCharacters/GetCharacters.component";
 import { MyFavorites } from "../MyFavorites/MyFavorites.component";
 import { Container } from "./ListsContainer.styled";
 
-export const ListsContainer = () => {
-  const characters = GetCharacters();
-
+export const ListsContainer = ({ characters }: CharactersListProps) => {
   return (
     <Container>
       <CharactersList characters={characters} />

@@ -38,5 +38,7 @@ export const GetCharacters = () => {
       });
   }, []);
 
-  return characters;
+  const withFilms = characters ? characters.filter((character) => character.films.length > 0) : [];
+
+  return withFilms;
 };

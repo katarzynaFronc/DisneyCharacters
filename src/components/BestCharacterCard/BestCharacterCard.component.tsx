@@ -1,36 +1,27 @@
 import { CharacterProps } from "../CharacterDetail/CharacterDetails.component";
+import { CharactersListProps } from "../Characters/Characters.component";
+import { FilterInput } from "../FilterInput/FilterInput.component";
 import { BestCard, Picture, TextContainer } from "./BestCharacterCard.styled";
-import { TextField } from "@mui/material";
-import { withStyles } from "@mui/styles";
-import { textFieldStyles } from "./BestCharacterCard.styled";
 
 export interface BestCharacterProps {
   character: CharacterProps[];
 }
 
-export const BestCharacterCard = ({ character }: BestCharacterProps) => {
-  const randomIndex = Math.floor(Math.random() * character.length);
-  const randomCharacter = character[randomIndex];
+export const BestCharacterCard = ({ characters }: CharactersListProps) => {
+  if (!characters || characters.length === 0) {
+    return null;
+  }
 
+  const randomIndex = Math.floor(Math.random() * characters.length);
+  const randomCharacter = characters[randomIndex];
   const { imageUrl } = randomCharacter || {};
-
-  const CustomTextField = withStyles(textFieldStyles)(TextField);
 
   return (
     <BestCard>
       <Picture src={imageUrl} alt="image" />
       <TextContainer>
         <h1> The Best Animated Disney Characters of All Time</h1>
-        <CustomTextField
-          id="outlined-basic"
-          label="Search Character"
-          variant="outlined"
-          sx={{
-            input: {
-              color: "white",
-            },
-          }}
-        />
+        <FilterInput />
       </TextContainer>
     </BestCard>
   );
