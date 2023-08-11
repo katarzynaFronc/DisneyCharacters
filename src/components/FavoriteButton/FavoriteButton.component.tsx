@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { StarBorder } from "@mui/icons-material";
 import StarRateIcon from "@mui/icons-material/StarRate";
-import { CharacterProps, SingleCharacterDetailsProps } from "./CharacterDetail/CharacterDetails.component";
+import { CharacterProps, SingleCharacterDetailsProps } from "../CharacterDetail/CharacterDetails.component";
 import { StarButton } from "./FavoriteButton.styled";
 
 export const FavoriteButton = ({ _id, character }: SingleCharacterDetailsProps) => {

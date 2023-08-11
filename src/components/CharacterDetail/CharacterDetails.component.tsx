@@ -2,7 +2,8 @@ import TvIcon from "@mui/icons-material/Tv";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { CharacterDescribe, CharacterName, ShowsIcon } from "./CharacterDetails.styled";
-import { FavoriteButton } from "../FavoriteButton.component";
+
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton.component";
 
 export interface CharacterProps {
   _id: number;
