@@ -1,13 +1,33 @@
+import { useContext, useState } from "react";
+import { CharactersContext } from "../../context/characters.context";
 import { CharacterProps } from "../CharacterDetail/CharacterDetails.component";
-import { CharactersListProps } from "../Characters/Characters.component";
-import { FilterInput } from "../FilterInput/FilterInput.component";
-import { BestCard, Picture, TextContainer } from "./BestCharacterCard.styled";
+import { BestCard, FilterInput, Picture, PictureContairer, TextContainer } from "./BestCharacterCard.styled";
+import { FavoritesContext } from "../../context/favorites.provider";
 
 export interface BestCharacterProps {
   character: CharacterProps[];
 }
 
-export const BestCharacterCard = ({ characters }: CharactersListProps) => {
+export interface BestCharacterCardProps {
+  onFilter: (filteredData: CharacterProps[]) => void;
+}
+
+export const BestCharacterCard = ({ onFilter }: BestCharacterCardProps) => {
+  const characters = useContext(CharactersContext);
+
+  const favorites = useContext(FavoritesContext);
+
+  const [filterInput, setFilterInput] = useState("");
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    setFilterInput(inputValue);
+
+    const filteredData = favorites.filter((favorite) => favorite.name.toLowerCase().includes(inputValue.toLowerCase()));
+
+    onFilter(filteredData);
+  };
+
   if (!characters || characters.length === 0) {
     return null;
   }
@@ -18,10 +38,14 @@ export const BestCharacterCard = ({ characters }: CharactersListProps) => {
 
   return (
     <BestCard>
-      <Picture src={imageUrl} alt="image" />
+      <PictureContairer>
+        <Picture src={imageUrl} alt="image" />
+      </PictureContairer>
       <TextContainer>
         <h1> The Best Animated Disney Characters of All Time</h1>
-        <FilterInput />
+        <div>
+          <FilterInput type="text" placeholder="Search Character" value={filterInput} onChange={handleInputChange} />
+        </div>
       </TextContainer>
     </BestCard>
   );

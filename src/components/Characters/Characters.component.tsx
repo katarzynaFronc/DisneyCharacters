@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BestCharacterCard } from "../BestCharacterCard/BestCharacterCard.component";
 import { CharacterProps } from "../CharacterDetail/CharacterDetails.component";
 import { ListsContainer } from "../ListsContainer/ListsContainer.component";
@@ -10,11 +11,17 @@ export interface CharactersListProps {
   character?: CharacterProps;
 }
 
-export const Characters = ({ characters }: CharactersListProps) => {
+export const Characters = () => {
+  const [filteredData, setFilteredData] = useState<CharacterProps[]>([]);
+
+  const handleFilter = (filteredData: CharacterProps[]) => {
+    setFilteredData(filteredData);
+  };
+
   return (
     <CharactersContainer>
-      <BestCharacterCard characters={characters} />
-      <ListsContainer characters={characters} />
+      <BestCharacterCard onFilter={handleFilter} />
+      <ListsContainer filteredData={filteredData} />
     </CharactersContainer>
   );
 };

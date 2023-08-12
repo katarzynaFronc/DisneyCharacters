@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { CharactersContext } from "../../context/characters.context";
 import { CharacterDetails } from "../CharacterDetail/CharacterDetails.component";
 import { CharacterDescribe } from "../CharacterDetail/CharacterDetails.styled";
-import { CharactersListProps } from "../Characters/Characters.component";
 import { ListContainer } from "./CharactersList.styled";
 
-export const CharactersList = ({ characters }: CharactersListProps) => {
+export const CharactersList = () => {
+  const characters = useContext(CharactersContext);
+
   if (!characters || characters.length === 0) {
     return null;
   }

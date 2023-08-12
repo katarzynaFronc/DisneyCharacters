@@ -4,8 +4,14 @@ import { CharacterProps, FavoritesContext } from "../../context/favorites.provid
 import { useContext } from "react";
 import { CharacterDetails } from "../CharacterDetail/CharacterDetails.component";
 
-export const MyFavorites = () => {
+export interface MyFavoritesProps {
+  filteredData: CharacterProps[];
+}
+
+export const MyFavorites = ({ filteredData }: MyFavoritesProps) => {
   const favorites = useContext(FavoritesContext);
+  const favoritesToRender = filteredData.length > 0 ? filteredData : favorites;
+
   return (
     <ListContainer>
       <h3>My Favorites</h3>
@@ -15,7 +21,7 @@ export const MyFavorites = () => {
         <h4 style={{ textAlign: "right" }}>Films count</h4>
         <h4 style={{ textAlign: "right" }}>Favorites</h4>
       </CharacterDescribe>
-      {favorites.map((character: CharacterProps) => (
+      {favoritesToRender.map((character: CharacterProps) => (
         <CharacterDetails key={character._id} _id={character._id} character={character} />
       ))}
     </ListContainer>
