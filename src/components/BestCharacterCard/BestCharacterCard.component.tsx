@@ -14,7 +14,6 @@ export interface BestCharacterCardProps {
 
 export const BestCharacterCard = ({ onFilter }: BestCharacterCardProps) => {
   const characters = useContext(CharactersContext);
-
   const favorites = useContext(FavoritesContext);
 
   const [filterInput, setFilterInput] = useState("");
@@ -36,12 +35,15 @@ export const BestCharacterCard = ({ onFilter }: BestCharacterCardProps) => {
   const randomCharacter = characters[randomIndex];
   const { imageUrl } = randomCharacter || {};
 
+  const withTvShows = characters ? characters.filter((character) => character.tvShows.length > 0) : [];
+
   return (
     <BestCard>
       <PictureContairer>
         <Picture src={imageUrl} alt="image" />
       </PictureContairer>
       <TextContainer>
+        <p>List of {withTvShows.length} Disney Characters with own Tv Shows</p>
         <h1> The Best Animated Disney Characters of All Time</h1>
         <div>
           <FilterInput type="text" placeholder="Search Character" value={filterInput} onChange={handleInputChange} />

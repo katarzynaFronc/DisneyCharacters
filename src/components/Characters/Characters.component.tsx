@@ -22,7 +22,6 @@ export const Characters = () => {
   return (
     <CharactersContainer>
       <MostPopular />
-
       <BestCharacterCard onFilter={handleFilter} />
       <ListsContainer filteredData={filteredData} />
     </CharactersContainer>

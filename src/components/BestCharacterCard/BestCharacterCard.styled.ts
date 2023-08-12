@@ -5,8 +5,10 @@ export const BestCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   margin: auto;
   width: 80%;
+
   background-color: var(--color-secondary);
   color: var(--color-primary-light);
   border-radius: 20px;
@@ -19,7 +21,12 @@ export const BestCard = styled.div`
   h1 {
     font-size: 3rem;
     padding-bottom: 24px;
-    margin: 0;
+    margin: 2rem 0;
+    font-weight: lighter;
+  }
+
+  p {
+    margin: 0%;
   }
 `;
 
@@ -29,8 +36,8 @@ export const PictureContairer = styled.div`
   border-radius: 20px;
 
   @media (min-width: 960px) {
-    height: 350px;
-    width: 350px;
+    height: 450px;
+    width: 450px;
   }
 `;
 
@@ -43,6 +50,7 @@ export const Picture = styled.img`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+
   margin: 50px;
   max-width: 450px;
 `;

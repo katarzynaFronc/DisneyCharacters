@@ -6,5 +6,5 @@ export const CharactersContainer = styled.div`
   width: 100%;
   margin: auto;
   gap: 50px;
-  background: linear-gradient(to bottom, var(--color-primary-light) 25%, var(--color-primary-dark) 25%);
+  background: linear-gradient(to bottom, var(--color-primary-light) 24%, var(--color-primary-dark) 24%);
 `;
