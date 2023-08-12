@@ -1,8 +1,8 @@
-import { Characters } from "./components/Characters/Characters.component";
 import { GetCharacters } from "./components/GetCharacters/GetCharacters.component";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { FavoritesContext } from "./context/favorites.provider";
 import { CharactersContext } from "./context/characters.context";
+import { Layout } from "./components/Layout/Layout.component";
 
 const App = () => {
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
@@ -11,9 +11,7 @@ const App = () => {
   return (
     <CharactersContext.Provider value={characters}>
       <FavoritesContext.Provider value={favorites}>
-        <div>
-          <Characters />
-        </div>
+        <Layout />
       </FavoritesContext.Provider>
     </CharactersContext.Provider>
   );

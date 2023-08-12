@@ -3,6 +3,7 @@ import { BestCharacterCard } from "../BestCharacterCard/BestCharacterCard.compon
 import { CharacterProps } from "../CharacterDetail/CharacterDetails.component";
 import { ListsContainer } from "../ListsContainer/ListsContainer.component";
 import { CharactersContainer } from "./Characters.styled";
+import { MostPopular } from "../MostPopular/MostPopular.component";
 
 export interface CharactersListProps {
   characters?: CharacterProps[];
@@ -20,6 +21,8 @@ export const Characters = () => {
 
   return (
     <CharactersContainer>
+      <MostPopular />
+
       <BestCharacterCard onFilter={handleFilter} />
       <ListsContainer filteredData={filteredData} />
     </CharactersContainer>

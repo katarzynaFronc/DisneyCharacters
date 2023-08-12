@@ -13,8 +13,11 @@ ${normalize}
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    color: var(--color-secondary);
+font-family: 'Roboto', sans-serif;
+color: var(--color-secondary);
+/* margin-top: 50px;
+margin-bottom: 50px; */
+
 }
 
 `;
