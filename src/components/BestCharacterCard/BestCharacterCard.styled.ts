@@ -24,9 +24,14 @@ export const BestCard = styled.div`
 `;
 
 export const PictureContairer = styled.div`
-  height: 350px;
-  width: 350px;
+  height: 100%;
+  width: 100%;
   border-radius: 20px;
+
+  @media (min-width: 960px) {
+    height: 350px;
+    width: 350px;
+  }
 `;
 
 export const Picture = styled.img`

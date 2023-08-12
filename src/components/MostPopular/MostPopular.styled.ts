@@ -10,7 +10,7 @@ export const MostPopularContainer = styled.div`
 
   h1 {
     font-size: 3.5rem;
-    padding: 100px 0 0 0;
+    padding: 50px 0 0 0;
     text-align: center;
   }
 `;
@@ -21,9 +21,10 @@ export const MostPopularCardContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   margin: auto;
-  height: 500px;
+  height: auto;
 
   @media (min-width: 960px) {
+    height: 500px;
     flex-direction: row;
   }
 `;
