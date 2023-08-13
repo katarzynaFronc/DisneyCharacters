@@ -1,15 +1,17 @@
-import { Characters } from "../Characters/Characters.component";
-import { Footer } from "../Footer/Footer.component";
-import { MostPopular } from "../MostPopularCard/MostPopularCard.styled";
-import { Navigation } from "../Navigation/Navigation.component";
+import { ReactNode } from "react";
 import { LayoutContainer } from "./Layout.styled";
+import { Navigation } from "../Navigation/Navigation.component";
+import { Footer } from "../Footer/Footer.component";
 
-export const Layout = () => {
+interface LayoutProps {
+  children?: ReactNode;
+}
+
+export const Layout = ({ children }: LayoutProps) => {
   return (
     <LayoutContainer>
       <Navigation />
-      <MostPopular />
-      <Characters />
+      <div> {children}</div>
       <Footer />
     </LayoutContainer>
   );
