@@ -14,7 +14,7 @@ export interface BestCharacterCardProps {
 
 export const BestCharacterCard = ({ onFilter }: BestCharacterCardProps) => {
   const characters = useContext(CharactersContext);
-  const favorites = useContext(FavoritesContext);
+  const { favorites } = useContext(FavoritesContext);
 
   const [filterInput, setFilterInput] = useState("");
 

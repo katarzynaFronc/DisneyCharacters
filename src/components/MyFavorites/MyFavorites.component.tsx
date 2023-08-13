@@ -9,7 +9,7 @@ export interface MyFavoritesProps {
 }
 
 export const MyFavorites = ({ filteredData }: MyFavoritesProps) => {
-  const favorites = useContext(FavoritesContext);
+  const { favorites } = useContext(FavoritesContext);
   const favoritesToRender = filteredData.length > 0 ? filteredData : favorites;
 
   return (

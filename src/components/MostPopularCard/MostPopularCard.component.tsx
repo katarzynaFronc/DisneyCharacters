@@ -9,7 +9,7 @@ interface MostPopularCardProps {
 }
 
 export const MostPopularCard = ({ character }: MostPopularCardProps) => {
-  const favorites = useContext(FavoritesContext);
+  const { favorites } = useContext(FavoritesContext);
 
   const { imageUrl, name, films, tvShows } = character;
 

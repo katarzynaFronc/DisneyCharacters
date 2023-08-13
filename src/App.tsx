@@ -1,19 +1,19 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { GetCharacters } from "./components/GetCharacters/GetCharacters.component";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import { FavoritesContext } from "./context/favorites.provider";
+import { FavoritesContext, FavoritesContextProvider } from "./context/favorites.provider";
 import { CharactersContext } from "./context/characters.context";
 import { Layout } from "./components/Layout/Layout.component";
 import { Homepage } from "./pages/Homepage.page";
 import { FavoritePage } from "./pages/Favorites.page";
+import { useContext } from "react";
 
 const App = () => {
-  const [favorites, setFavorites] = useLocalStorage("favorites", []);
+  const { favorites } = useContext(FavoritesContext);
   const characters = GetCharacters();
 
   return (
     <CharactersContext.Provider value={characters}>
-      <FavoritesContext.Provider value={favorites}>
+      <FavoritesContextProvider>
         <BrowserRouter>
           <Layout>
             <Routes>
@@ -22,7 +22,7 @@ const App = () => {
             </Routes>
           </Layout>
         </BrowserRouter>
-      </FavoritesContext.Provider>
+      </FavoritesContextProvider>
     </CharactersContext.Provider>
   );
 };

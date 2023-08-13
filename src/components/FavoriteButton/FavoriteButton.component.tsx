@@ -6,7 +6,7 @@ import { StarButton } from "./FavoriteButton.styled";
 import { FavoritesContext } from "../../context/favorites.provider";
 
 export const FavoriteButton = ({ _id, character }: SingleCharacterDetailsProps) => {
-  const favorites = useContext(FavoritesContext);
+  const { setLocalStorageValue } = useContext(FavoritesContext);
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
@@ -14,6 +14,7 @@ export const FavoriteButton = ({ _id, character }: SingleCharacterDetailsProps) 
     if (savedFavorites) {
       const parsedFavorites: CharacterProps[] = JSON.parse(savedFavorites);
       const isCharacterFavorited = parsedFavorites.some((fav) => fav._id === _id);
+
       setIsFavorited(isCharacterFavorited);
     }
   }, [_id]);
@@ -27,9 +28,11 @@ export const FavoriteButton = ({ _id, character }: SingleCharacterDetailsProps) 
 
     if (isFavorited) {
       const updatedFavorites = favoriteCharacters.filter((fav) => fav._id !== _id);
+      setLocalStorageValue(updatedFavorites);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     } else {
       favoriteCharacters.push(character);
+      setLocalStorageValue(favoriteCharacters);
       localStorage.setItem("favorites", JSON.stringify(favoriteCharacters));
     }
 

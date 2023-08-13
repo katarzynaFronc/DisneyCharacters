@@ -13,10 +13,20 @@ export interface CharacterProps {
   tvShows: string[];
 }
 
-export const FavoritesContext = React.createContext<Array<CharacterProps>>([]);
+export interface FavoritesContextProps {
+  favorites: CharacterProps[];
+  setLocalStorageValue: (value: CharacterProps[]) => void;
+}
+
+const initialContext: FavoritesContextProps = {
+  favorites: [],
+  setLocalStorageValue: () => {},
+};
+
+export const FavoritesContext = React.createContext<FavoritesContextProps>(initialContext);
 
 export const FavoritesContextProvider = ({ children }: ProviderProps) => {
-  const favorites = useLocalStorage("favorites", []);
+  const [favorites, setLocalStorageValue] = useLocalStorage("favorites", []);
 
-  return <FavoritesContext.Provider value={favorites}>{children}</FavoritesContext.Provider>;
+  return <FavoritesContext.Provider value={{ favorites, setLocalStorageValue }}>{children}</FavoritesContext.Provider>;
 };
