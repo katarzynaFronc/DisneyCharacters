@@ -4,6 +4,11 @@
 
 This is a recruitment task containing Rest API. Local storage was used to add characters to favorites. Hooks were used to save and transfer component state. Routing was implemented to display favorite characters on a separate tab. Icons and tooltip were imported from Material UI.
 
+## Setup
+
+- npm install - to install the package.json file
+- npm run dev - to run the application.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
