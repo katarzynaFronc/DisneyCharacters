@@ -11,7 +11,9 @@ export const CharacterDescribe = styled.div`
 
   img {
     grid-column: 1/2;
-    max-height: 2rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   span {
@@ -22,6 +24,11 @@ export const CharacterDescribe = styled.div`
     grid-column: 3/4;
     text-align: right;
   }
+`;
+
+export const ImageContainer = styled.div`
+  height: 46px;
+  width: 46px;
 `;
 
 export const CharacterName = styled.div`
