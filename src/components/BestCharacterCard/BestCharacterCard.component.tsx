@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useMemo } from "react";
 import { CharactersContext } from "../../context/characters.context";
 import { CharacterProps } from "../CharacterDetail/CharacterDetails.component";
 import { BestCard, FilterInput, Picture, PictureContairer, TextContainer } from "./BestCharacterCard.styled";
@@ -18,6 +18,14 @@ export const BestCharacterCard = ({ onFilter }: BestCharacterCardProps) => {
 
   const [filterInput, setFilterInput] = useState("");
 
+  const randomCaharcter = useMemo(() => {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+
+    return characters[randomIndex];
+  }, [characters]);
+
+  const imageUrl = randomCaharcter?.imageUrl;
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setFilterInput(inputValue);
@@ -31,16 +39,12 @@ export const BestCharacterCard = ({ onFilter }: BestCharacterCardProps) => {
     return null;
   }
 
-  const randomIndex = Math.floor(Math.random() * characters.length);
-  const randomCharacter = characters[randomIndex];
-  const { imageUrl } = randomCharacter || {};
-
   const withTvShows = characters ? characters.filter((character) => character.tvShows.length > 0) : [];
 
   return (
     <BestCard>
       <PictureContairer>
-        <Picture src={imageUrl} alt="image" />
+        <Picture src={imageUrl} alt="Default character image" />
       </PictureContairer>
       <TextContainer>
         <p>List of {withTvShows.length} Disney Characters with own Tv Shows</p>
